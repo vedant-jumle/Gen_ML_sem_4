@@ -4,6 +4,7 @@
 import os
 import sys
 import shutil
+from tqdm import tqdm
 
 
 def break_dataset(directory, number_of_files, new_directory):
@@ -16,13 +17,9 @@ def break_dataset(directory, number_of_files, new_directory):
     """
     if not os.path.exists(new_directory):
         os.makedirs(new_directory)
-    for file in os.listdir(directory):
+    for file in tqdm(os.listdir(directory)[:number_of_files]):
         if file.endswith(".jpg"):
-            if number_of_files > 0:
-                shutil.copy(os.path.join(directory, file), os.path.join(new_directory, file))
-                number_of_files -= 1
-            else:
-                break
+            shutil.copy(os.path.join(directory, file), os.path.join(new_directory, file))
 
 
 if __name__ == "__main__":
