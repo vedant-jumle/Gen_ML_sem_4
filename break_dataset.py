@@ -18,7 +18,7 @@ def break_dataset(directory, number_of_files, new_directory):
     if not os.path.exists(new_directory):
         os.makedirs(new_directory)
     for file in tqdm(os.listdir(directory)[:number_of_files]):
-        if file.endswith(".jpg"):
+        if file.endswith(".jpg") or file.endswith(".png"):
             shutil.copy(os.path.join(directory, file), os.path.join(new_directory, file))
 
 
