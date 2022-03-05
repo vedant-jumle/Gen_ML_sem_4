@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Monofett&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: #393E46;
+    color: white;
+}
+
+.container-fluid{
+    background-color: black;
+}
+
+.container-fluid a, ul, li{
+    background-color: black;
+    font-family: 'Calistoga', sans-serif;
+    font-size: 1.25em;
+}
+
+#title{
+    font-family: 'Monofett', cursive;
+    /* font-size: 2em; */
+    color: white;
+    background-color: black;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+    font-family: 'Calistoga', sans-serif;
+    background-color: #393E46;
+}
+
