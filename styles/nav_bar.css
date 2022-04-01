@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Space+Grotesk&display=swap');
+
+.navbar-header{
+    width: 15vw;
+}
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+}
+
+.navbar-header a{
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 12500;
+}
+
+.navbar-contents{
+    width: 60vw;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+}
+
+a:visited{
+    color: black;
+}
+
+#clicked{
+    color:crimson;
+}
+
+.navbar-contents a:hover{
+    transform: translateY(-2px);
+    color: brown;
+    font-weight: 900;
+}
+
+
+@media screen and (max-width: 768px){
+    .navbar-header{
+        width: 100vw;
+    }
+    .navbar-contents{
+        width: 100vw;
+    }
+}
