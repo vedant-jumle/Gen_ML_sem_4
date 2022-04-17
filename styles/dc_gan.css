@@ -87,10 +87,6 @@
     transition: 0.2s;
 }
 
-.container-two{
-    width: 100wv;
-    height: auto;
-}
 
 @media screen and (max-width: 600px) {
     .container-one form section{
