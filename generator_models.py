@@ -105,6 +105,14 @@ class DCGAN:
 
         tf.io.write_file("./output/output.jpg", generated_image)
 
+def save_image(img, path):
+    # clip image between 0, 1
+    img = np.clip(img, 0, 1)
+    img = img * 255
+    img = img.astype(np.uint8)
+    img = Image.fromarray(img)
+    img.save(path)
+
 class SRGAN:
     def __init__(self, model_gen_path, lr_dim=64, hr_dim=256):
         self.model_gen_path = model_gen_path
@@ -121,6 +129,7 @@ class SRGAN:
         lower_dim = img.shape[pack_axis]
         dim_ratio = img.shape[0] / img.shape[1]
         # resize image to lower_dim, lower_dim
+        img = img.numpy()
         img = img * 255
         img = img.astype(np.uint8)
         img = Image.fromarray(img)
@@ -147,17 +156,21 @@ class SRGAN:
         img = tf.image.resize(img, dims)
         return img
 
+    def load_image_lr(self, path):
+        im = Image.open(path)
+        im_dims =  im.size
+
+        # load the image in lr_dim, lr_dim
+        im = im.resize((self.lr_dim, self.lr_dim))
+        im = np.array(im).astype(np.float32)
+        im = im[:, :, :3]
+        return np.expand_dims((im / 255), axis=0)
+
     def upscale_64_256(self, image_path: str):
-        image = load_image(image_path, shape=None)
-        image = self.downscale(image, (self.lr_dim, self.lr_dim))
-        image, dim_ratio, axis = self.pack(image[0])
-        image = np.expand_dims(image, axis=0)
+        image = self.load_image_lr(image_path)
+        image = self.model(image)
 
-        ai_upscaled = self.model(image).numpy()
-        ai_upscaled = np.clip(ai_upscaled, 0, 1)
-        ai_upscaled = self.unpack(ai_upscaled[0], dim_ratio, axis)
+        # image_file = Image.fromarray(ai_upscaled)
+        # image_file.save("./output/test.jpg")
 
-        ai_upscaled = tf.image.convert_image_dtype(ai_upscaled, tf.uint8)
-        ai_upscaled = tf.image.encode_jpeg(ai_upscaled)
-
-        tf.io.write_file("./generated/test.jpg", ai_upscaled)
+        save_image(image[0], "./output/test.jpg")
