@@ -28,6 +28,11 @@ def img(filename):
     return redirect(url_for('static', filename='img/' + filename))
 
 
+# NST
+@app.route("/NST_page")
+def NST_page():
+    return render_template("style_transfer.html")
+
 @app.route("/NST", methods=['POST'])
 def NST():
     files = [request.files['NST_content'], request.files['NST_style']]
@@ -37,6 +42,13 @@ def NST():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         img_paths.append(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+    # takes time
     nst.style_image(*img_paths)
     
-    return redirect()
+    
+    return redirect("/NST_page?output=true")
+
+@app.route("/DCGAN_generate")
+def generate_dcgan():
+    dcgan.generate()
+    return redirect("/img/DCGAN_output.png")
