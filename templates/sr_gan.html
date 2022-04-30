@@ -76,6 +76,8 @@
         </form>
     </div>
 
+    <!-- create DOM element and add image -->
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
     <script>
         const output = Qs.parse(location.search, {
@@ -100,15 +102,19 @@
                 document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
             }
         }
-
+        
         console.log(output);
         function changeOP(){
             if (output!=undefined) {
                 // if the filename is there, then remove the form and add a new dom element with lr and hr image
                 document.getElementById('generate-btn').hidden = true;
                 // input = "SRGAN_input.png", output = "SRGAN_output.png"
-                document.getElementById('sr_gan_img').src = `/img/${output}`;
+
+
+                document.getElementById('sr_gan_img').src = "/img/SRGAN_input.png"; // sr gan lr
                 document.getElementById('sr_gan_img').hidden = false;
+
+                // output path = "/img/SRGAN_output.png"
                 // input dims = 128, 128, output_dims = 256, 256 -> fix both to 256
             }
         }

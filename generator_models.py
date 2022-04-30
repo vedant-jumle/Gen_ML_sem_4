@@ -71,7 +71,7 @@ class StyleTransfer:
         # save the image
         image = tf.image.convert_image_dtype(image, tf.uint8)
         image = tf.image.encode_jpeg(image)
-        tf.io.write_file("./output/output.jpg", image)
+        tf.io.write_file("./output/NST_result.png", image)
 
 def load_image(path, shape=(224, 224), normalize=True):
     img = cv2.imread(path)
