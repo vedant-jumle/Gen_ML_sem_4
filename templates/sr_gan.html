@@ -59,13 +59,12 @@
     <hr>
 
     <div class="container-one">
-        <form action="">
+        <form action="changeOP()">
             <section>
                 <div class="upload-section">
-                    <input type="file" name="img0" id="actual-btn" accept="image/*" onchange="readURL(event,0)"
-                        hidden />
+                    <input type="file" name="img0" id="actual-btn" accept="image/*" width="256" height="256" onchange="readURL(event,0)" hidden />
                     <label for="actual-btn" id="upload-btn">UPLOAD IMAGE</label>
-                    <img src="#" id="img-upload" alt="Your Uploaded Image" width="450" height="600" hidden>
+                    <img src="#" id="img-upload" alt="Your Uploaded Image" width="256" height="256" hidden>
                 </div>
                 <div class="upload-section">
                     <img src="#" id="sr_gan_img" alt="super resolution image">
@@ -91,21 +90,27 @@
                 document.getElementById('img-upload').src = URL.createObjectURL(event.target.files[0]);
                 document.getElementById('img-upload').hidden = false;
                 document.getElementById('upload-btn').hidden = true;
-                document.getElementsByClassName('upload-section')[1].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
+                document.getElementsByClassName('upload-section')[0].style.padding = '0px';
+                document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
             } else {
                 document.getElementById('img-upload1').src = URL.createObjectURL(event.target.files[0]);
                 document.getElementById('img-upload1').hidden = false;
                 document.getElementById('upload-btn1').hidden = true;
-                document.getElementsByClassName('upload-section')[0].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
+                document.getElementsByClassName('upload-section')[1].style.padding = '0px';
+                document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
             }
         }
 
-        if (output) {
-            // if the filename is there, then remove the form and add a new dom element with lr and hr image
-            // input = "SRGAN_input.png", output = "SRGAN_output.png"
-            // input dims = 128, 128, output_dims = 256, 256 -> fix both to 256
+        console.log(output);
+        function changeOP(){
+            if (output!=undefined) {
+                // if the filename is there, then remove the form and add a new dom element with lr and hr image
+                document.getElementById('generate-btn').hidden = true;
+                // input = "SRGAN_input.png", output = "SRGAN_output.png"
+                document.getElementById('sr_gan_img').src = `/img/${output}`;
+                document.getElementById('sr_gan_img').hidden = false;
+                // input dims = 128, 128, output_dims = 256, 256 -> fix both to 256
+            }
         }
     </script>
 </body>
