@@ -59,7 +59,7 @@
     <hr>
 
     <div class="container-one">
-        <form action="changeOP()">
+        <form action="">
             <section>
                 <div class="upload-section">
                     <input type="file" name="img0" id="actual-btn" accept="image/*" width="256" height="256" onchange="readURL(event,0)" hidden />
@@ -81,36 +81,33 @@
         const output = Qs.parse(location.search, {
             ignoreQueryPrefix: true
         }).output;
-
-        // src=`/img/${filename}`
-
-        function readURL(event, mode) {
-            console.log(URL.createObjectURL(event.target.files[0]));
-            if (mode === 0) {
-                document.getElementById('img-upload').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload').hidden = false;
-                document.getElementById('upload-btn').hidden = true;
-                document.getElementsByClassName('upload-section')[0].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
-            } else {
-                document.getElementById('img-upload1').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload1').hidden = false;
-                document.getElementById('upload-btn1').hidden = true;
-                document.getElementsByClassName('upload-section')[1].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
-            }
-        }
-
         console.log(output);
-        function changeOP(){
-            if (output!=undefined) {
-                // if the filename is there, then remove the form and add a new dom element with lr and hr image
-                document.getElementById('generate-btn').hidden = true;
-                // input = "SRGAN_input.png", output = "SRGAN_output.png"
-                document.getElementById('sr_gan_img').src = `/img/${output}`;
-                document.getElementById('sr_gan_img').hidden = false;
-                // input dims = 128, 128, output_dims = 256, 256 -> fix both to 256
+        // src=`/img/${filename}`
+        if(output === undefined){
+            function readURL(event, mode) {
+                console.log(URL.createObjectURL(event.target.files[0]));
+                if (mode === 0) {
+                    document.getElementById('img-upload').src = URL.createObjectURL(event.target.files[0]);
+                    document.getElementById('img-upload').hidden = false;
+                    document.getElementById('upload-btn').hidden = true;
+                    document.getElementsByClassName('upload-section')[0].style.padding = '0px';
+                    document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
+                } else {
+                    document.getElementById('img-upload1').src = URL.createObjectURL(event.target.files[0]);
+                    document.getElementById('img-upload1').hidden = false;
+                    document.getElementById('upload-btn1').hidden = true;
+                    document.getElementsByClassName('upload-section')[1].style.padding = '0px';
+                    document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
+                }
             }
+        }else{
+            // if the filename is there, then remove the form and add a new dom element with lr and hr image
+            document.getElementById('generate-btn').hidden = true;
+            // input = "SRGAN_input.png", output = "SRGAN_output.png"
+            document.getElementById('sr_gan_img').src = "SRGAN_output.png";
+            document.getElementById('sr_gan_img').hidden = false;
+            document.getElementById('upload-btn').hidden = true;
+            docuemtn.getElementById('img-upload').src = "SRGAN_input.png";
         }
     </script>
 </body>
