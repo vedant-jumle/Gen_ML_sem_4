@@ -25,7 +25,7 @@ def index():
 
 @app.route("/img/<filename>")
 def img(filename):
-    return redirect(url_for('static', filename='img/' + filename))
+    return redirect(url_for('static', filename=f"/{filename}"))
 
 
 # NST
@@ -48,7 +48,34 @@ def NST():
     
     return redirect("/NST_page?output=true")
 
+
+@app.route("/DCGAN_page")
+def DCGAN_page():
+    pass
+
+
 @app.route("/DCGAN_generate")
 def generate_dcgan():
     dcgan.generate()
     return redirect("/img/DCGAN_output.png")
+
+@app.route("/SRGAN_page")
+def SRGAN_page():
+    return render_template("sr_gan.html")
+
+@app.route("/SRGAN", methods=["POST"])
+def generate_srgan():
+    # file saving logic
+    if request.method == 'POST':
+        file = request.files['lr_image']
+        filename = "SRGAN_input.png"
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+
+    srgan.upscale_64_256()
+    return redirect("/SRGAN_page?output=true")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

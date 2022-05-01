@@ -11,7 +11,7 @@ tf.config.experimental.set_memory_growth(physical_devices[0], True)
 class StyleTransfer:
     def __init__(self, vgg_weights="./models/VGG19/weights.h5", optimizer_name=keras.optimizers.Adam):
         self.vgg_weights = vgg_weights
-        self.vgg_model = self.load_model()
+        self.vgg_model = self.load_model(vgg_weights)
         self.optimizer = optimizer_name(lr=0.02, beta_1=0.99, epsilon=1e-1)
     
     def gram_matrix(self, input_tensor):
@@ -166,11 +166,11 @@ class SRGAN:
         im = im[:, :, :3]
         return np.expand_dims((im / 255), axis=0)
 
-    def upscale_64_256(self, image_path: str):
+    def upscale_64_256(self, image_path="./static/SRGAN_input.png"):
         image = self.load_image_lr(image_path)
         image = self.model(image)
 
         # image_file = Image.fromarray(ai_upscaled)
         # image_file.save("./output/test.jpg")
 
-        save_image(image[0], "./output/test.jpg")
+        save_image(image[0], "./static/SRGAN_output.png")
