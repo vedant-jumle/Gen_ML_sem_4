@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/sr_gan.css">
-    <link rel="stylesheet" href="../styles/nav_bar.css">
+    <link rel="stylesheet" href="../static/css/dc_gan.css">
+    <link rel="stylesheet" href="../static/css/dc_gan.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js"
         integrity="sha512-53y53BQwxZvk4YGd9SkHPqI7nDwlIIFZ4D2BSJG08Co7y6O3YsWeRtO6trPtdoyqfTCTkTbCulNosIAI6E4UvQ=="
         crossorigin="anonymous"></script>
@@ -22,26 +22,27 @@
         <div class="container-fluid">
 
             <div class="navbar-header ps-lg-5">
-                <a href="./index.html">GAN-DEMO</a>
+                <a href="/">GAN-DEMO</a>
             </div>
 
             <div class="navbar-contents justify-content-evenly ps-lg-5">
+                
                 <ul class="navbar-nav ps-lg-5">
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./index.html">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./style_transfer.html">Style Transfer</a>
+                        <a class="nav-link" href="/NST_page">Style Transfer</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a id="clicked" class="nav-link" href="./dc_gan.html">DC-GAN</a>
+                        <a  id="clicked" class="nav-link" href="/DCGAN_page">DC-GAN</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./sr_gan.html">SR-GAN</a>
+                        <a class="nav-link" href="/SRGAN">SR-GAN</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
@@ -63,7 +64,7 @@
         <form action="">
             <section>
                 <div class="image-gen">
-                    <img id="" src="#" alt="generated image" width="128" height="128">
+                    <img id="output-image" src="#" alt="generated image" width="128" height="128">
                 </div>
             </section>
             <div class="center-placer">
@@ -72,39 +73,8 @@
         </form>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
-    <script>
-        const output = Qs.parse(location.search, {
-            ignoreQueryPrefix: true
-        }).output;
-
-        function readURL(event, mode) {
-            console.log(URL.createObjectURL(event.target.files[0]));
-            if (mode === 0) {
-                document.getElementById('img-upload').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload').hidden = false;
-                document.getElementById('upload-btn').hidden = true;
-                document.getElementsByClassName('upload-section')[1].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
-            } else {
-                document.getElementById('img-upload1').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload1').hidden = false;
-                document.getElementById('upload-btn1').hidden = true;
-                document.getElementsByClassName('upload-section')[0].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
-            }
-        }
-
-        function generate(){
-            // remove img element and add new img element, set src = "/DCGAN_generate"
-        }
-
-        
-
-        if (output){
-            // change here hriday
-
-        }
-    </script>
+    <script src="../static/js/dc_gan.js"></script>
+    <script src="../static/js/upload-mech.js"></script>
 </body>
 
 </html>

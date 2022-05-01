@@ -22,26 +22,26 @@
         <div class="container-fluid">
 
             <div class="navbar-header ps-lg-5">
-                <a href="./index.html">GAN-DEMO</a>
+                <a href="/">GAN-DEMO</a>
             </div>
 
             <div class="navbar-contents justify-content-evenly ps-lg-5">
                 <ul class="navbar-nav ps-lg-5">
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./index.html">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./style_transfer.html">Style Transfer</a>
+                        <a class="nav-link" href="/NST_page">Style Transfer</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a class="nav-link" href="./dc_gan.html">DC-GAN</a>
+                        <a class="nav-link" href="/DCGAN_page">DC-GAN</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
-                        <a id="clicked" class="nav-link" href="./sr_gan.html">SR-GAN</a>
+                        <a id="clicked" class="nav-link" href="/SRGAN">SR-GAN</a>
                     </li>
 
                     <li class="nav-item pe-lg-4 ps-lg-4">
@@ -76,43 +76,8 @@
             </div>
         </form>
     </div>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
-    <script>
-        const output = Qs.parse(location.search, {
-            ignoreQueryPrefix: true
-        }).output;
-        console.log(output);
-        // src=`/img/${filename}`
-
-        function readURL(event, mode) {
-            console.log(URL.createObjectURL(event.target.files[0]));
-            if (mode === 0) {
-                document.getElementById('img-upload').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload').hidden = false;
-                document.getElementById('upload-btn').hidden = true;
-                document.getElementsByClassName('upload-section')[0].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
-            } else {
-                document.getElementById('img-upload1').src = URL.createObjectURL(event.target.files[0]);
-                document.getElementById('img-upload1').hidden = false;
-                document.getElementById('upload-btn1').hidden = true;
-                document.getElementsByClassName('upload-section')[1].style.padding = '0px';
-                document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
-            }
-        }
-
-        if (output != undefined) {
-            // if the filename is there, then remove the form and add a new dom element with lr and hr image
-            document.getElementById('generate-btn').hidden = true;
-            // input = "SRGAN_input.png", output = "SRGAN_output.png"
-            document.getElementById('sr_gan_img').src = "/static/SRGAN_output.png";
-            document.getElementById('sr_gan_img').hidden = false;
-            document.getElementById('upload-btn').hidden = true;
-            document.getElementById('actual-btn').hidden = true;
-            document.getElementById('img-upload').src = "/static/SRGAN_input.png";
-            document.getElementById('img-upload').hidden = false;
-        }
-    </script>
+    <script src="../static/js/upload-mech.js"></script>
+    <script src="../static/js/sr_gan.js"></script>
 </body>
 
 </html>
