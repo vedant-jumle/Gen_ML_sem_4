@@ -6,8 +6,11 @@ from PIL import Image
 from torch import svd
 
 # configure the GPU
-physical_devices = tf.config.list_physical_devices("GPU")
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
+try:
+    physical_devices = tf.config.list_physical_devices("GPU")
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+except:
+    pass
 
 class StyleTransfer:
     def __init__(self, vgg_weights="./production_models/nst.h5", optimizer_name=keras.optimizers.Adam):
