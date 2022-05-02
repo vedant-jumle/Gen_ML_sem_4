@@ -132,3 +132,4 @@ models/
 dataset/
 
 generated/
+*.h5
