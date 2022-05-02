@@ -3,6 +3,7 @@ const output = Qs.parse(location.search, {
 }).output;
 
 if(output!=undefined){
+    document.getElementById('img-result').src="/static/NST_output.png";
     // left wala image = "NST_content.png"
     document.getElementById('img-upload1').src="/static/NST_content.png";
     // right wala image = "NST_style.png"
@@ -10,9 +11,11 @@ if(output!=undefined){
 }
 
 function loading(){
-    document.getElementById('img-result').src="/static/loading.gif";
+    document.getElementById('img-load').hidden=false;
+    document.getElementById('img-result').hidden=true;
 }
 
 function loaded(){
-    document.getElementById('img-result').src="/static/NST_output.png";
+    document.getElementById('img-result').hidden=false;
+    document.getElementById('img-load').hidden=true;
 }
