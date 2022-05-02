@@ -12,8 +12,8 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 print("Loading models...")
 nst = StyleTransfer()
-dcgan = DCGAN("./models/DCGAN/generator/generator_332")
-srgan = SRGAN("./models/SRGAN/gen/generator-320")
+dcgan = DCGAN("./production_models/DCGAN")
+srgan = SRGAN("./production_models/SRGAN")
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -49,15 +49,16 @@ def NST():
     return redirect("/NST_page?output=true")
 
 
-@app.route("/DCGAN_page")
+@app.route("/DCGAN_page", methods=['GET', 'POST'])
 def DCGAN_page():
-    pass
+    return render_template("dc_gan.html")
 
 
-@app.route("/DCGAN_generate")
+@app.route("/DCGAN")
 def generate_dcgan():
     dcgan.generate()
-    return redirect("/img/DCGAN_output.png")
+    return redirect("/DCGAN_page?output=true")
+
 
 @app.route("/SRGAN_page")
 def SRGAN_page():

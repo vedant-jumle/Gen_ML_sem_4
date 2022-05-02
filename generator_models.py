@@ -3,13 +3,14 @@ import numpy as np
 from tensorflow import keras
 import cv2
 from PIL import Image
+from torch import svd
 
 # configure the GPU
 physical_devices = tf.config.list_physical_devices("GPU")
 tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 class StyleTransfer:
-    def __init__(self, vgg_weights="./models/VGG19/weights.h5", optimizer_name=keras.optimizers.Adam):
+    def __init__(self, vgg_weights="./production_models/nst.h5", optimizer_name=keras.optimizers.Adam):
         self.vgg_weights = vgg_weights
         self.vgg_model = self.load_model(vgg_weights)
         self.optimizer = optimizer_name(lr=0.02, beta_1=0.99, epsilon=1e-1)
@@ -55,7 +56,7 @@ class StyleTransfer:
         if epoch % 100 == 0:
             tf.print(f"Epoch {epoch} | Loss: {loss}")
 
-    def style_image(self, content_path, style_path, epochs=1000, style_weight=1e-6, content_weight=1e-2):
+    def style_image(self, content_path="./static/NST_content.png", style_path="./static/NST_style.png", epochs=1000, style_weight=1e-6, content_weight=1e-2):
         content_image = load_image(content_path)
         style_image = load_image(style_path)
 
@@ -69,9 +70,7 @@ class StyleTransfer:
             self.train_step(image, i, content_target, style_target, content_weight, style_weight)
         
         # save the image
-        image = tf.image.convert_image_dtype(image, tf.uint8)
-        image = tf.image.encode_jpeg(image)
-        tf.io.write_file("./output/NST_result.png", image)
+        save_image(image[0], "./static/NST_output.png")
 
 def load_image(path, shape=(224, 224), normalize=True):
     img = cv2.imread(path)
@@ -100,10 +99,8 @@ class DCGAN:
         random_vector = tf.random.normal(shape=(1, self.latent_dim))
         generated_image = self.model(random_vector)[0]
         generated_image = tf.clip_by_value(generated_image, clip_value_min=0.0, clip_value_max=1.0)
-        generated_image = tf.image.convert_image_dtype(generated_image, tf.uint8)
-        generated_image = tf.image.encode_jpeg(generated_image)
-
-        tf.io.write_file("./output/output.jpg", generated_image)
+        
+        save_image(generated_image[0], "./static/DCGAN_output.png")
 
 def save_image(img, path):
     # clip image between 0, 1

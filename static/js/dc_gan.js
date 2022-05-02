@@ -3,5 +3,5 @@ const output = Qs.parse(location.search, {
 }).output;
 
 if(output!=undefined){
-    document.getElementById('output-img').src = "/static/DCGAN_output.png";
+    document.getElementById('output-image').src = "/static/DCGAN_output.png";
 }
