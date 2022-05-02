@@ -63,7 +63,7 @@
             <section>
                 <div class="upload-section">
                     <input type="file" name="lr_image" id="actual-btn" accept="image/*" width="256" height="256"
-                        onchange="readURL(event,0)" hidden />
+                        onchange="readURL(event,0)" onload="style.padding=0" hidden />
                     <label for="actual-btn" id="upload-btn">UPLOAD IMAGE</label>
                     <img src="#" id="img-upload" alt="Your Uploaded Image" width="256" height="256" hidden>
                 </div>
@@ -76,7 +76,7 @@
             </div>
         </form>
     </div>
-    <script src="/static/js/upload-mech.js"></script>
+    <!-- <script src="/static/js/upload-mech.js"></script> -->
     <script src="/static/js/sr_gan.js"></script>
 </body>
 

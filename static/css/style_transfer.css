@@ -19,7 +19,7 @@
 }
 
 .container-one form section{
-    width: 99vw;
+    width: 98vw;
     height: auto;
     display: flex;
     margin: auto;
@@ -88,9 +88,11 @@
 }
 
 .container-two{
-    width: 100wv;
+    margin-top: 10vh;
+    width: 98vw;
     height: auto;
 }
+
 
 @media screen and (max-width: 600px) {
     .container-one form section{
