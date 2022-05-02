@@ -3,7 +3,6 @@ import numpy as np
 from tensorflow import keras
 import cv2
 from PIL import Image
-from torch import svd
 
 # configure the GPU
 try:
