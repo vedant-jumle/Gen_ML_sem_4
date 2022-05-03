@@ -100,9 +100,9 @@ class DCGAN:
     def generate(self):
         random_vector = tf.random.normal(shape=(1, self.latent_dim))
         generated_image = self.model(random_vector)[0]
-        generated_image = tf.clip_by_value(generated_image, clip_value_min=0.0, clip_value_max=1.0)
+        generated_image = np.clip(generated_image, 0, 1)
         
-        save_image(generated_image[0], "./static/DCGAN_output.png")
+        save_image(generated_image, "./static/DCGAN_output.png")
 
 def save_image(img, path):
     # clip image between 0, 1
