@@ -30,4 +30,8 @@ if (output != undefined) {
     document.getElementById('actual-btn').hidden = true;
     document.getElementById('img-upload').src = "/static/SRGAN_input.png";
     document.getElementById('img-upload').hidden = false;
+    document.getElementsByClassName('upload-section')[0].style.padding = '0px';
+    document.getElementsByClassName('upload-section')[0].style.border.radius = '0px';
+    document.getElementsByClassName('upload-section')[1].style.padding = '0px';
+    document.getElementsByClassName('upload-section')[1].style.border.radius = '0px';
 }
