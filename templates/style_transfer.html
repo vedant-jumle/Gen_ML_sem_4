@@ -63,24 +63,37 @@
     <div class="container-one">
         <form action="/NST" method="POST" enctype = "multipart/form-data">
             <section>
+
                 <div class="upload-section">
                     <input type="file" name="NST_content" id="actual-btn1" accept="image/*" onchange="readURL(event,1)"
                          hidden />
                     <label for="actual-btn1" id="upload-btn1">UPLOAD IMAGE</label>
                     <img src="#" id="img-upload1" alt="Your Uploaded Image" width="256" height="256" hidden>
                 </div>
+
+                <!-- slider part over here -->
+                <div class="slider-zone">
+                    <div class="slider-align">
+                            <label for="slider" id="slider-value">1</label>
+                            <input id="slider" name="slider" onclick="updateValue()" onpointermove="updateValue()" type="range" min="1" max="10">
+                    </div>
+                </div>
+
                 <div class="upload-section">
                     <input type="file" name="NST_style" id="actual-btn" accept="image/*" onchange="readURL(event,0)"
                         hidden />
                     <label for="actual-btn" id="upload-btn">UPLOAD IMAGE</label>
                     <img src="#" id="img-upload" alt="Your Uploaded Image" width="256" height="256" hidden>
                 </div>
+
             </section>
             <div class="center-placer">
                 <input id="submit-btn" class="btn btn-primary" style="margin: 3%;" type="submit" value="SUBMIT" onclick="loading()">
             </div>
         </form>
+
     </div>
+
     <div class="container-two">
         <div class="center-placer">
             <div class="img-container">

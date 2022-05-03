@@ -26,3 +26,8 @@ function loaded(){
     document.getElementById('img-result').hidden=false;
     document.getElementById('img-load').hidden=true;
 }
+
+function updateValue(){
+    var value = document.getElementById('slider').value;
+    document.getElementById('slider-value').innerHTML=value;
+}

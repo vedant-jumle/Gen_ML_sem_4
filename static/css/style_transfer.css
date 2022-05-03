@@ -93,6 +93,33 @@
     height: auto;
 }
 
+.slider-zone{
+    /* width:10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  /* The following aren't needed, they just help us to see the effect */
+    height: 3rem;
+    padding: 1rem;
+}
+
+.slider-align{
+    width: 10vw;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slider-align label{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
 
 @media screen and (max-width: 600px) {
     .container-one form section{
