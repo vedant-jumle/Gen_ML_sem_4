@@ -35,6 +35,9 @@ def NST_page():
 
 @app.route("/NST", methods=['POST'])
 def NST():
+    weight = int(request.form['slider'])
+    content_weight = 10**(-weight)
+    style_weight = 10**(-(10-weight))
     files = [request.files['NST_content'], request.files['NST_style']]
     img_paths = []
     for i, file in enumerate(files):
@@ -43,8 +46,8 @@ def NST():
         img_paths.append(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
     # takes time
-    nst.style_image(*img_paths)
-    
+    nst.style_image(*img_paths, content_weight=content_weight, style_weight=style_weight)
+
     
     return redirect("/NST_page?output=true")
 
