@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/style_transfer.css">
+    <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/nav_bar.css">
     <title>Home</title>
 </head>
@@ -51,7 +51,124 @@
     </nav>
 
     <hr>
+    
+    <div class="container">
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center">Our Implementations:</h1>
+            </div>
+        </div>
+
+        <hr>
+
+        
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              
+                <div class="carousel-item active">
+
+                <img class="d-block w-100" src="/static/min-1.jpg" height="600" alt="First slide">
+
+                <div class="carousel-caption mb-lg-5">
+                    <h3 id="cr-header" class="text-start mb-2">Neural Style Transfer</h3>
+                    <div class="text-start mt-3 mb-3">
+                        Neural style transfer is an optimization technique used to take two images—a content image and a style reference image (such as an artwork by a famous painter)—and blend them together so the output image looks like the content image, but “painted” in the style of the style reference image.
+                    </div>
+                    <div class="text-start mt-4">
+                        <button type="button" class="btn btn-outline-info me-2" onclick="window.open('https://arxiv.org/pdf/1508.06576.pdf')">Read More</button>
+                        <button type="button" class="btn btn-outline-info ms-2" onclick="window.open('/NST_page')">See it working</button>
+                    </div>
+                </div>
+
+              </div>
+
+              <div class="carousel-item">
+                
+                <img class="d-block w-100" src="/static/min-2.webp" height="600" alt="Second slide">
+
+                <div class="carousel-caption mb-lg-4 text-black">
+                    <h3 id="cr-header" class="text-start mb-2"> Deep Convolutional Generative Adversarial Network</h3>
+                    <div class="text-start mt-3 mb-3">
+                        Two models are trained simultaneously by an adversarial process. A generator ("the artist") learns to create images that look real, while a discriminator ("the art critic") learns to tell real images apart from fakes.
+                        It is popularly referred to as <strong>DCGAN</strong>
+                    </div>
+                    <div class="text-start mt-4">
+                        <button type="button" class="btn btn-outline-info me-2" onclick="window.open('https://arxiv.org/pdf/1511.06434.pdf')">Read More</button>
+                        <button type="button" class="btn btn-outline-info ms-2" onclick="window.open('/DCGAN_page')">See it working</button>
+                    </div>
+                </div>
+
+              </div>
+
+              <div class="carousel-item">
+                
+                <img class="d-block w-100" src="/static/min-3.jpg" height="600" alt="Third slide">
+
+                <div class="carousel-caption mb-lg-5">
+                    <h3 id="cr-header" class="text-start mb-2">Super Resolution Generative Adversarial Network</h3>
+                    <div class="text-start mt-3 mb-3">
+                        Two models are trained simultaneously by an adversarial process. A generator ("the artist") learns to create images that look real, while a discriminator ("the art critic") learns to tell real images apart from fakes.
+                        In this case we teach the generator to create images that look like the content image, but with a higher resolution while preserving the details.                        
+                        It is popularly referred to as <strong>SRGAN</strong>
+                    </div>
+                    <div class="text-start mt-4">
+                        <button type="button" class="btn btn-outline-info me-2" onclick="window.open('https://arxiv.org/pdf/1809.00219.pdf')">Read More</button>
+                        <button type="button" class="btn btn-outline-info ms-2" onclick="window.open('/SRGAN_page')">See it working</button>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+          <hr class="mt-lg-2">
+
+        <div class="row mt-lg-3">
+            <div class="col-lg-12">
+                <h1 class="text-center">Datasets Used:</h1>
+            </div>
+        </div>
+
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item"><a href="https://data.vision.ee.ethz.ch/cvl/DIV2K/">DIV2K</a> (For SRGAN)</li>
+            <li class="list-group-item"><a href="https://google.github.io/cartoonset/download.html">Google Cartoon</a> (For DCGAN)</li>
+        </ul>
+
+        <div class="row mt-lg-3">
+            <div class="col-lg-12">
+                <h1 class="text-center">Models Used:</h1>
+            </div>
+        </div>
+
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item"><a href="https://drive.google.com/drive/folders/1IJeWFhMFtyiKIdlASrl791wEWnhDrsat">VGG-19</a> (For Style Transfer)</li>
+        </ul>
+
+        <hr>
+
+        <div class="mt-lg-5">
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -9,6 +9,11 @@
     text-decoration: none;
 }
 
+#cr-header{
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+}
+
 .navbar-header a{
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
