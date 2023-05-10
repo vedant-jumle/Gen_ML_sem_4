@@ -1,5 +1,8 @@
 # Gen_ML_sem_4
 
+* implements Neural Style Transfer
+* implements DCGAN & SRGAN
+
 ## Datasets:
 * Celeba: [Celeb-a kaggle](https://www.kaggle.com/jessicali9530/celeba-dataset)
 * Div2k: [Div2k](https://data.vision.ee.ethz.ch/cvl/DIV2K/)
